@@ -22,7 +22,7 @@ function makeGrid() {
         var row = canvas.insertRow(r);
         for (var c=0; c<width.value; c++){
             var cell = row.insertCell(c);
-            cell.setAttribute('id', 'cell');
+            cell.setAttribute('id', `cell-${r}-${c}`);
         }
     }
 }
@@ -36,6 +36,9 @@ function clearGrid(){
 
 // event to paint the cell on click
 canvas.addEventListener('click', function(e) {
-    var currentCanvas = e.target;
-    currentCanvas.style.backgroundColor = color.value;
+    if(event.target.nodeName === 'TD'){
+        var currentCanvas = e.target;
+        currentCanvas.style.backgroundColor = color.value;
+
+    }
 });
